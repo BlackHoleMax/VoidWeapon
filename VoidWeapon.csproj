@@ -1,19 +1,19 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-	<!-- Import tModLoader mod properties -->
-	<Import Project="..\tModLoader.targets" />
+    <!-- Import tModLoader mod properties -->
+    <Import Project="..\tModLoader.targets"/>
 
-	<!-- General -->
-	<PropertyGroup>
-		
-	</PropertyGroup>
+    <!-- General -->
+    <PropertyGroup>
 
-	<!-- References -->
-	<ItemGroup>
-		
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Projectiles\AISwordQi.cs.bak" />
-	</ItemGroup>
+    </PropertyGroup>
+
+    <!-- References -->
+    <ItemGroup>
+
+    </ItemGroup>
+    <ItemGroup>
+        <None Remove="Projectiles\AISwordQi.cs.bak"/>
+    </ItemGroup>
 
 </Project>
