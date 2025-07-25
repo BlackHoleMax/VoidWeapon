@@ -66,6 +66,10 @@ public class AISwordPlus : ModItem
             if (!dashPlayer.isRightClickCharging) dashPlayer.StartRightClickCharging();
             dashPlayer.UpdateRightClickCharging();
 
+            // 触发武器动画，确保武器贴图显示
+            player.itemAnimation = 2;
+            player.itemTime = 2;
+
             // 右键蓄力特效
             var chargeProgress = dashPlayer.GetRightClickChargeProgress();
             if (chargeProgress > 0)
@@ -132,18 +136,21 @@ public class AISwordPlus : ModItem
 
     public override bool AltFunctionUse(Player player)
     {
-        var dashPlayer = player.GetModPlayer<DashPlayer>();
-
-        // 右键功能 - 开始蓄力
-        if (!dashPlayer.isRightClickCharging) dashPlayer.StartRightClickCharging();
-
+        // 右键功能 - 返回true以启用右键功能
         return true;
     }
 
     public override bool CanUseItem(Player player)
     {
+        var dashPlayer = player.GetModPlayer<DashPlayer>();
+        
+        // 如果正在蓄力，则不能使用武器（避免攻击打断蓄力）
+        if (dashPlayer.isRightClickCharging || dashPlayer.isLeftClickCharging) 
+            return false;
+
         // 右键用于蓄力，不直接使用物品
-        if (player.altFunctionUse == 2) return false;
+        if (player.altFunctionUse == 2) 
+            return false;
 
         return true;
     }
@@ -279,8 +286,8 @@ public class AISwordPlus : ModItem
         // 如果在强化状态，执行强化攻击
         if (isEmpowered && empoweredAttacksLeft > 0)
         {
-            // 执行强化攻击 - 向四面八方发射弹幕
-            ExecuteEmpoweredAttack(player, source, position, damage, knockback);
+            // 执行强化攻击 - 向四面八方发射弹幕（从玩家位置发射）
+            ExecuteEmpoweredAttack(player, source, player.Center, damage, knockback);
 
             // 减少强化攻击次数
             empoweredAttacksLeft--;
@@ -337,7 +344,40 @@ public class AISwordPlus : ModItem
 
     public override void UseStyle(Player player, Rectangle heldItemFrame)
     {
-        // 移除了左键蓄力旋转效果，使用默认挥动方式
+        var dashPlayer = player.GetModPlayer<DashPlayer>();
+        
+        // 如果正在右键蓄力，调整武器姿势为垂直向上
+        if (dashPlayer.isRightClickCharging)
+        {
+            // 计算蓄力进度
+            float chargeProgress = dashPlayer.GetRightClickChargeProgress();
+            
+            // 设置武器位置在玩家上方
+            player.itemLocation = player.MountedCenter + new Vector2(0, -30 * player.gravDir);
+            
+            // 设置武器旋转角度为垂直向上 (根据玩家朝向调整)
+            // 考虑到武器贴图本身是45度角，需要调整角度让剑尖朝正上方
+            if (player.direction == 1) // 面向右
+            {
+                player.itemRotation = -MathHelper.PiOver4; // 调整45度，使剑尖朝上
+            }
+            else // 面向左
+            {
+                player.itemRotation = MathHelper.PiOver4; // 旋转45度，使剑尖朝上
+            }
+            
+            // 添加轻微的晃动效果，让蓄力更生动
+            float sway = (float)Math.Sin(Main.GameUpdateCount * 0.2f) * 0.05f * chargeProgress;
+            player.itemRotation += sway;
+            
+            // 确保在蓄力时持续更新itemTime和itemAnimation以保持动画
+            player.itemTime = 2;
+            player.itemAnimation = 2;
+        }
+        else
+        {
+            base.UseStyle(player, heldItemFrame);
+        }
     }
 
     public override void AddRecipes()

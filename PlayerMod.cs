@@ -17,7 +17,7 @@ public class DashPlayer : ModPlayer
 
     public override void ResetEffects()
     {
-        // 每帧重置效果
+        // 每帧重置效果，但保持蓄力状态直到手动停止
     }
 
     // 右键蓄力相关方法
