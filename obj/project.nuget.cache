@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "K82pOhQ6Ka0=",
+  "success": true,
+  "projectFilePath": "/home/blackholemax/.local/share/Terraria/tModLoader/ModSources/VoidWeapon/VoidWeapon.csproj",
+  "expectedPackageFiles": [
+    "/home/blackholemax/.nuget/packages/tmodloader.codeassist/0.1.5/tmodloader.codeassist.0.1.5.nupkg.sha512",
+    "/home/blackholemax/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.15/microsoft.aspnetcore.app.ref.8.0.15.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -1,0 +1,15 @@
+Mods: {
+	Voidseeker: {
+		Items: {
+			AISword: {
+				DisplayName: A I Sword
+				Tooltip: ""
+			}
+		}
+
+		Projectiles: {
+			AISwordQi.DisplayName: A I Sword Qi
+			AISwordQiChange.DisplayName: A I Sword Qi Change
+		}
+	}
+}

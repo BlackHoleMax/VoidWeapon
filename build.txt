@@ -1,0 +1,3 @@
+displayName = 虚空武器
+author = blackholemax
+version = 0.6

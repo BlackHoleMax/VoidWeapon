@@ -1,0 +1,16 @@
+{
+	"profiles": {
+		"Terraria": {
+			"commandName": "Executable",
+			"executablePath": "/usr/bin/dotnet",
+			"commandLineArgs": "$(tMLPath)",
+			"workingDirectory": "$(tMLSteamPath)"
+		},
+		"TerrariaServer": {
+			"commandName": "Executable",
+			"executablePath": "/usr/bin/dotnet",
+			"commandLineArgs": "$(tMLServerPath)",
+			"workingDirectory": "$(tMLSteamPath)"
+		}
+	}
+}

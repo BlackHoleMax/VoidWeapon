@@ -1,0 +1,33 @@
+# This file will automatically update with entries for new content after a build and reload.
+
+Items: {
+	AISword: {
+		DisplayName: 虚空追踪者
+		Tooltip:
+			'''
+			一把融合了虚空力量的神秘之刃
+			发射能够穿透墙壁和敌人的能量弹幕
+			每第4次攻击会发射追踪敌人的强化弹幕
+			'在虚空中追寻，在黑暗中制裁'
+			'''
+	}
+
+	AISwordPlus: {
+		DisplayName: 虚空逐梦者
+		Tooltip:
+			'''
+			战士月后毕业武器
+			挥舞时发射追踪弹幕
+			击中敌怪时会产生六方向爆裂攻击
+			'逐梦于虚空深渊，征服于星辰大海'
+			'''
+	}
+}
+
+Projectiles: {
+	AISwordQi.DisplayName: 虚空能量
+	AISwordQiChange.DisplayName: 虚空追踪弹
+	AISwordPlusQi.DisplayName: 逐梦虚空弹
+	AISwordPlusQi1.DisplayName: 虚空爆裂弹
+	RainbowLaser.DisplayName: Rainbow Laser
+}
