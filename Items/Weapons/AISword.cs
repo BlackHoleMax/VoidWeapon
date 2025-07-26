@@ -7,15 +7,12 @@ using VoidWeapon.Projectiles;
 
 namespace VoidWeapon.Items.Weapons;
 
-/// <summary>
-///     人工智能之剑 - 一把强大的近战武器，具有独特的弹幕发射模式和华丽的视觉效果
-/// </summary>
 public class AISword : ModItem
 {
     // 常量定义
     private const int BaseDamage = 85;
-    private const int UseTime = 20;
-    private const int UseAnimation = 20;
+    private const int UseTimeValue = 20;
+    private const int UseAnimationValue = 20;
     private const float ShootSpeed = 16f;
     private const int SpecialShotInterval = 4;
 
@@ -39,8 +36,8 @@ public class AISword : ModItem
         Item.DamageType = DamageClass.Melee;
         Item.width = 60;
         Item.height = 64;
-        Item.useTime = UseTime;
-        Item.useAnimation = UseAnimation;
+        Item.useTime = UseTimeValue;
+        Item.useAnimation = UseAnimationValue;
         Item.useStyle = ItemUseStyleID.Swing;
         Item.knockBack = 6;
         Item.value = Item.buyPrice(gold: 5);
